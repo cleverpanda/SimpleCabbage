@@ -1,0 +1,31 @@
+{
+  "parent": "minecraft:husbandry/root",
+  "display": {
+    "icon": {
+      "item": "simplecabbage:cabbage_head"
+    },
+    "title": {
+      "translate": "simplecabbage.advancements.husbandry.plant_cabbage.title"
+    },
+    "description": {
+      "translate": "simplecabbage.advancements.husbandry.plant_cabbage.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cabbage": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "block": "simplecabbage:cabbage"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cabbage"
+    ]
+  ]
+}

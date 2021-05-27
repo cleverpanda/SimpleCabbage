@@ -1,0 +1,13 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+issueTrackerURL="https://github.com/cleverpanda/SimpleCabbage/issues"
+license="MIT License"
+[[mods]] #mandatory
+modId="simplecabbage"
+version="1.0.0"
+displayName="Simple Cabbage"
+displayURL="https://minecraft.curseforge.com/projects/simple-cabbage"
+logoFile="slogo.png"
+authors="Cleverpanda714"
+description='''
+Cabbage that integrates seamlessly with vanilla Minecraft'''

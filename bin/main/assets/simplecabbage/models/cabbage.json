@@ -1,0 +1,44 @@
+{  
+   "forge_marker":1,
+   "defaults":{  
+      "model":"minecraft:cross",
+      "transform":"forge:default-block"
+   },
+   "variants":{  
+      "age":{  
+         "0":{  
+            "textures":{  
+               "cross": "simplecabbage:blocks/cabbage_1"
+            }
+         },
+         "1":{  
+            "textures":{  
+               "cross": "simplecabbage:blocks/cabbage_2"
+            }
+         },
+         "2":{  
+	    "model":"simplecabbage:block_fan_45",
+            "textures":{  
+               "fan": "simplecabbage:blocks/cabbage_3",
+			   "cross": "simplecabbage:blocks/cabbage_1"
+            }
+         },
+         "3":{  
+	    "model":"simplecabbage:block_fan_cube_small",
+            "textures":{  
+               "fan": "simplecabbage:blocks/cabbage_4",
+			   "cube": "simplecabbage:blocks/cabbage_inner",
+			   "cube_top": "simplecabbage:blocks/cabbage_inner"
+            }
+         },
+         "4":{  
+	    "model":"simplecabbage:block_fan_cube",
+            "textures":{  
+               "fan": "simplecabbage:blocks/cabbage_5",
+			   "cube": "simplecabbage:blocks/cabbage_inner",
+			   "cube_top": "simplecabbage:blocks/cabbage_inner"
+            }
+         }
+      }
+   }
+}

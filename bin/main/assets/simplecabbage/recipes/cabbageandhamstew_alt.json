@@ -1,0 +1,15 @@
+{
+    "conditions": [{
+        "type": "minecraft:item_exists",
+        "item": "simplecabbage:cabbage_stew_ham"
+    }],
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        { "item": "simplecabbage:cabbage_head" },
+	{ "item": "minecraft:potato" },
+	{ "item": "minecraft:carrot" },
+	{ "item": "minecraft:porkchop" },
+        { "item": "minecraft:bowl" }
+    ],
+    "result": { "item": "simplecabbage:cabbage_stew_ham" }
+}

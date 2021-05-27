@@ -1,0 +1,18 @@
+[
+{
+  "modid": "simplecabbage",
+  "name": "Simple Cabbage",
+  "description": "Cabbage the way Mojang might make",
+
+  "version": "1.0.5",
+  "mcversion": "${mcversion}",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/simple-cabbage",
+  "updateUrl": "",
+  "authorList": ["Cleverpanda714"],
+
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
