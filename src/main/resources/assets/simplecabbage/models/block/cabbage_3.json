@@ -1,0 +1,8 @@
+{
+    "parent": "simplecabbage:block/block_fan_cube_small",
+    "textures": {
+        "fan": "simplecabbage:blocks/cabbage_4",
+	"cube": "simplecabbage:blocks/cabbage_block",
+	"cube_top": "simplecabbage:blocks/cabbage_block"
+    }
+}

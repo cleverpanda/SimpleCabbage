@@ -11,49 +11,9 @@ Lambdas: false
 Locals:  false
 Map:     D:\Modding\1.16\SimpleCabbage\build\createMcpToSrg\output.tsrg
 Input:   D:\Modding\1.16\SimpleCabbage\src\main\java
-Processing 15 files
-Start Processing: panda/simplecabbage/ConfigSimpleCabbage.java
-End  Processing: panda/simplecabbage/ConfigSimpleCabbage.java
-
-Start Processing: panda/simplecabbage/SimpleCabbage.java
-End  Processing: panda/simplecabbage/SimpleCabbage.java
-
-Start Processing: panda/simplecabbage/blocks/BlockCabbage.java
-End  Processing: panda/simplecabbage/blocks/BlockCabbage.java
-
-Start Processing: panda/simplecabbage/gen/CabbageWorldGen.java
-End  Processing: panda/simplecabbage/gen/CabbageWorldGen.java
-
-Start Processing: panda/simplecabbage/gen/ComponentCabbageField.java
-End  Processing: panda/simplecabbage/gen/ComponentCabbageField.java
-
-Start Processing: panda/simplecabbage/init/ModBlocks.java
-End  Processing: panda/simplecabbage/init/ModBlocks.java
-
-Start Processing: panda/simplecabbage/init/ModItems.java
-End  Processing: panda/simplecabbage/init/ModItems.java
-
-Start Processing: panda/simplecabbage/items/ItemCabbageSeeds.java
-End  Processing: panda/simplecabbage/items/ItemCabbageSeeds.java
-
-Start Processing: panda/simplecabbage/other/DropSeedsHandler.java
-End  Processing: panda/simplecabbage/other/DropSeedsHandler.java
-
-Start Processing: panda/simplecabbage/other/HwylaPlugin.java
-End  Processing: panda/simplecabbage/other/HwylaPlugin.java
-
-Start Processing: panda/simplecabbage/other/ImmersiveEngineeringCompat.java
-End  Processing: panda/simplecabbage/other/ImmersiveEngineeringCompat.java
-
-Start Processing: panda/simplecabbage/other/ThermalCompat.java
-End  Processing: panda/simplecabbage/other/ThermalCompat.java
-
-Start Processing: panda/simplecabbage/proxy/ClientProxy.java
-End  Processing: panda/simplecabbage/proxy/ClientProxy.java
-
-Start Processing: panda/simplecabbage/proxy/CommonProxy.java
-End  Processing: panda/simplecabbage/proxy/CommonProxy.java
-
-Start Processing: panda/simplecabbage/proxy/ServerProxy.java
-End  Processing: panda/simplecabbage/proxy/ServerProxy.java
+Processing 1 files
+Start Processing: com/example/examplemod/ExampleMod.java
+Rename FieldReference[2010:4, "DIRT", Owner: net/minecraft/block/Blocks] Shift[0] DIRT -> field_150346_d
+Rename FieldReference[2247:7, "options", Owner: net/minecraft/client/Minecraft] Shift[10] options -> field_71474_y
+End  Processing: com/example/examplemod/ExampleMod.java
 

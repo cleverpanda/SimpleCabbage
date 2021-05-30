@@ -1,157 +1,129 @@
-start 1 panda/simplecabbage/ConfigSimpleCabbage.java d29f0c5cb162759b476b7388a2aa1fa6
-package 8 19 panda.simplecabbage
-classdef 90 2801 panda/simplecabbage/ConfigSimpleCabbage
-# Start CLASS panda/simplecabbage/ConfigSimpleCabbage
-  class 103 19 ConfigSimpleCabbage false panda/simplecabbage/ConfigSimpleCabbage
-  field 148 8 headFood panda/simplecabbage/ConfigSimpleCabbage
-  field 180 7 headSat panda/simplecabbage/ConfigSimpleCabbage
-  field 209 8 stewFood panda/simplecabbage/ConfigSimpleCabbage
-  field 239 11 hamStewFood panda/simplecabbage/ConfigSimpleCabbage
-  field 272 11 seedsWeight panda/simplecabbage/ConfigSimpleCabbage
-  field 309 14 coldbiomesonly panda/simplecabbage/ConfigSimpleCabbage
-  field 345 16 generationWeight panda/simplecabbage/ConfigSimpleCabbage
-  field 383 13 ethanolvolume panda/simplecabbage/ConfigSimpleCabbage
-  field 418 14 plantoilvolume panda/simplecabbage/ConfigSimpleCabbage
-  field 454 16 clochedropamount panda/simplecabbage/ConfigSimpleCabbage
-  field 496 17 useeasyharvesting panda/simplecabbage/ConfigSimpleCabbage
-  field 537 12 growModifier panda/simplecabbage/ConfigSimpleCabbage
-  field 575 13 generatefarms panda/simplecabbage/ConfigSimpleCabbage
-  methoddef 596 91 <init> ()V
+start 1 com/example/examplemod/ExampleMod.java 6506317bdab3aa151c69942365c3764c
+package 8 22 com.example.examplemod
+classdef 937 2695 com/example/examplemod/ExampleMod
+# Start CLASS com/example/examplemod/ExampleMod
+  class 938 3 Mod false net/minecraftforge/fml/common/Mod
+  class 969 10 ExampleMod false com/example/examplemod/ExampleMod
+  class 1049 6 Logger false org/apache/logging/log4j/Logger
+  field 1056 6 LOGGER com/example/examplemod/ExampleMod
+  class 1065 10 LogManager false org/apache/logging/log4j/LogManager
+  method 1076 9 getLogger org/apache/logging/log4j/LogManager getLogger ()Lorg/apache/logging/log4j/Logger;
+  methoddef 1094 733 <init> ()V
   # Start METHOD <init>()V
-    method 604 19 ConfigSimpleCabbage panda/simplecabbage/ConfigSimpleCabbage <init> ()V
-    class 644 21 IllegalStateException false java/lang/IllegalStateException
+    method 1101 10 ExampleMod com/example/examplemod/ExampleMod <init> ()V
+    class 1176 24 FMLJavaModLoadingContext false net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext
+    method 1201 3 get net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext get ()Lnet/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext;
+    method 1207 14 getModEventBus net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext getModEventBus ()Lnet/minecraftforge/eventbus/api/IEventBus;
+    method 1224 11 addListener net/minecraftforge/eventbus/api/IEventBus addListener (Ljava/util/function/Consumer;)V
+    method 1242 5 setup com/example/examplemod/ExampleMod setup (Lnet/minecraftforge/fml/event/lifecycle/FMLCommonSetupEvent;)V
+    class 1315 24 FMLJavaModLoadingContext false net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext
+    method 1340 3 get net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext get ()Lnet/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext;
+    method 1346 14 getModEventBus net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext getModEventBus ()Lnet/minecraftforge/eventbus/api/IEventBus;
+    method 1363 11 addListener net/minecraftforge/eventbus/api/IEventBus addListener (Ljava/util/function/Consumer;)V
+    method 1381 10 enqueueIMC com/example/examplemod/ExampleMod enqueueIMC (Lnet/minecraftforge/fml/event/lifecycle/InterModEnqueueEvent;)V
+    class 1459 24 FMLJavaModLoadingContext false net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext
+    method 1484 3 get net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext get ()Lnet/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext;
+    method 1490 14 getModEventBus net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext getModEventBus ()Lnet/minecraftforge/eventbus/api/IEventBus;
+    method 1507 11 addListener net/minecraftforge/eventbus/api/IEventBus addListener (Ljava/util/function/Consumer;)V
+    method 1525 10 processIMC com/example/examplemod/ExampleMod processIMC (Lnet/minecraftforge/fml/event/lifecycle/InterModProcessEvent;)V
+    class 1606 24 FMLJavaModLoadingContext false net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext
+    method 1631 3 get net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext get ()Lnet/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext;
+    method 1637 14 getModEventBus net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext getModEventBus ()Lnet/minecraftforge/eventbus/api/IEventBus;
+    method 1654 11 addListener net/minecraftforge/eventbus/api/IEventBus addListener (Ljava/util/function/Consumer;)V
+    method 1672 13 doClientStuff com/example/examplemod/ExampleMod doClientStuff (Lnet/minecraftforge/fml/event/lifecycle/FMLClientSetupEvent;)V
+    class 1781 14 MinecraftForge false net/minecraftforge/common/MinecraftForge
+    field 1796 9 EVENT_BUS net/minecraftforge/common/MinecraftForge
+    method 1806 8 register net/minecraftforge/eventbus/api/IEventBus register (Ljava/lang/Object;)V
   # End METHOD
-  methoddef 693 2195 load (LConfiguration;)V
-  # Start METHOD load(LConfiguration;)V
-    method 712 4 load panda/simplecabbage/ConfigSimpleCabbage load (LConfiguration;)V
+  methoddef 1833 207 setup (Lnet/minecraftforge/fml/event/lifecycle/FMLCommonSetupEvent;)V
+  # Start METHOD setup(Lnet/minecraftforge/fml/event/lifecycle/FMLCommonSetupEvent;)V
+    method 1846 5 setup com/example/examplemod/ExampleMod setup (Lnet/minecraftforge/fml/event/lifecycle/FMLCommonSetupEvent;)V
+    class 1858 19 FMLCommonSetupEvent false net/minecraftforge/fml/event/lifecycle/FMLCommonSetupEvent
+    parameter 1878 5 event com/example/examplemod/ExampleMod setup (Lnet/minecraftforge/fml/event/lifecycle/FMLCommonSetupEvent;)V 0
+    field 1928 6 LOGGER com/example/examplemod/ExampleMod
+    method 1935 4 info org/apache/logging/log4j/Logger info (Ljava/lang/String;)V
+    field 1971 6 LOGGER com/example/examplemod/ExampleMod
+    method 1978 4 info org/apache/logging/log4j/Logger info (Ljava/lang/String;Ljava/lang/Object;)V
+    class 2003 6 Blocks false net/minecraft/block/Blocks
+    field 2010 4 DIRT net/minecraft/block/Blocks
+    method 2015 15 getRegistryName net/minecraftforge/registries/IForgeRegistryEntry getRegistryName ()Lnet/minecraft/util/ResourceLocation;
   # End METHOD
-# End CLASS
-end
-start 1 panda/simplecabbage/SimpleCabbage.java 394076caef5485b1b3443089099babfd
-package 8 19 panda.simplecabbage
-classdef 1391 2174 panda/simplecabbage/SimpleCabbage
-# Start CLASS panda/simplecabbage/SimpleCabbage
-  class 1392 3 Mod false net/minecraftforge/fml/common/Mod
-# End CLASS
-end
-start 1 panda/simplecabbage/blocks/BlockCabbage.java d42fcd609d4a25103899860c0ab47f81
-package 8 26 panda.simplecabbage.blocks
-classdef 1108 7465 panda/simplecabbage/blocks/BlockCabbage
-# Start CLASS panda/simplecabbage/blocks/BlockCabbage
-  class 1121 12 BlockCabbage false panda/simplecabbage/blocks/BlockCabbage
-# End CLASS
-end
-start 1 panda/simplecabbage/gen/CabbageWorldGen.java ea778578bdabef885ca8184093552311
-package 8 23 panda.simplecabbage.gen
-classdef 663 703 panda/simplecabbage/gen/CabbageWorldGen
-# Start CLASS panda/simplecabbage/gen/CabbageWorldGen
-  class 676 15 CabbageWorldGen false panda/simplecabbage/gen/CabbageWorldGen
-# End CLASS
-end
-start 1 panda/simplecabbage/gen/ComponentCabbageField.java 9cefed1265e13941d609c3465bedb213
-package 8 23 panda.simplecabbage.gen
-classdef 575 3266 panda/simplecabbage/gen/ComponentCabbageField
-# Start CLASS panda/simplecabbage/gen/ComponentCabbageField
-  class 588 21 ComponentCabbageField false panda/simplecabbage/gen/ComponentCabbageField
-# End CLASS
-end
-start 1 panda/simplecabbage/init/ModBlocks.java 75a69057932f1ea158551c421c7d9cfe
-package 8 24 panda.simplecabbage.init
-classdef 417 508 panda/simplecabbage/init/ModBlocks
-# Start CLASS panda/simplecabbage/init/ModBlocks
-  class 418 18 EventBusSubscriber false net/minecraftforge/fml/common/Mod$EventBusSubscriber
-  method 437 5 modid net/minecraftforge/fml/common/Mod$EventBusSubscriber modid ()Ljava/lang/String;
-  class 445 13 SimpleCabbage false panda/simplecabbage/SimpleCabbage
-  field 459 5 MODID panda/simplecabbage/SimpleCabbage
-# End CLASS
-end
-start 1 panda/simplecabbage/init/ModItems.java 6ff1a51dde8cc0a16fb11053471b2b6f
-package 8 24 panda.simplecabbage.init
-classdef 728 1663 panda/simplecabbage/init/ModItems
-# Start CLASS panda/simplecabbage/init/ModItems
-  class 729 18 EventBusSubscriber false net/minecraftforge/fml/common/Mod$EventBusSubscriber
-  method 748 5 modid net/minecraftforge/fml/common/Mod$EventBusSubscriber modid ()Ljava/lang/String;
-  class 756 13 SimpleCabbage false panda/simplecabbage/SimpleCabbage
-  field 770 5 MODID panda/simplecabbage/SimpleCabbage
-# End CLASS
-end
-start 1 panda/simplecabbage/items/ItemCabbageSeeds.java 527810f306ed99d3e66e606e57ca55dc
-package 8 25 panda.simplecabbage.items
-classdef 383 406 panda/simplecabbage/items/ItemCabbageSeeds
-# Start CLASS panda/simplecabbage/items/ItemCabbageSeeds
-  class 396 16 ItemCabbageSeeds false panda/simplecabbage/items/ItemCabbageSeeds
-# End CLASS
-end
-start 1 panda/simplecabbage/other/DropSeedsHandler.java 8d1e363ca01e0bccada7e20668dfa690
-package 8 25 panda.simplecabbage.other
-classdef 579 702 panda/simplecabbage/other/DropSeedsHandler
-# Start CLASS panda/simplecabbage/other/DropSeedsHandler
-  class 592 16 DropSeedsHandler false panda/simplecabbage/other/DropSeedsHandler
-  methoddef 722 556 onHarvestGrass (LHarvestDropsEvent;)V
-# End CLASS
-end
-start 1 panda/simplecabbage/other/HwylaPlugin.java 8f2c7a401f2d8e9a7d5ccd04d38bfd62
-package 8 25 panda.simplecabbage.other
-classdef 483 470 panda/simplecabbage/other/HwylaPlugin
-end
-start 1 panda/simplecabbage/other/ImmersiveEngineeringCompat.java 34c4bd6abe1d640f7f1d81204a625034
-package 8 25 panda.simplecabbage.other
-classdef 832 1591 panda/simplecabbage/other/ImmersiveEngineeringCompat
-# Start CLASS panda/simplecabbage/other/ImmersiveEngineeringCompat
-  class 845 26 ImmersiveEngineeringCompat false panda/simplecabbage/other/ImmersiveEngineeringCompat
-  methoddef 879 98 <init> ()V
-  # Start METHOD <init>()V
-    method 887 26 ImmersiveEngineeringCompat panda/simplecabbage/other/ImmersiveEngineeringCompat <init> ()V
-    class 934 21 IllegalStateException false java/lang/IllegalStateException
+  methoddef 2046 216 doClientStuff (Lnet/minecraftforge/fml/event/lifecycle/FMLClientSetupEvent;)V
+  # Start METHOD doClientStuff(Lnet/minecraftforge/fml/event/lifecycle/FMLClientSetupEvent;)V
+    method 2059 13 doClientStuff com/example/examplemod/ExampleMod doClientStuff (Lnet/minecraftforge/fml/event/lifecycle/FMLClientSetupEvent;)V
+    class 2079 19 FMLClientSetupEvent false net/minecraftforge/fml/event/lifecycle/FMLClientSetupEvent
+    parameter 2099 5 event com/example/examplemod/ExampleMod doClientStuff (Lnet/minecraftforge/fml/event/lifecycle/FMLClientSetupEvent;)V 0
+    field 2176 6 LOGGER com/example/examplemod/ExampleMod
+    method 2183 4 info org/apache/logging/log4j/Logger info (Ljava/lang/String;Ljava/lang/Object;)V
+    parameter 2212 5 event com/example/examplemod/ExampleMod doClientStuff (Lnet/minecraftforge/fml/event/lifecycle/FMLClientSetupEvent;)V 0
+    method 2218 20 getMinecraftSupplier net/minecraftforge/fml/event/lifecycle/FMLClientSetupEvent getMinecraftSupplier ()Ljava/util/function/Supplier;
+    method 2241 3 get java/util/function/Supplier get ()Ljava/lang/Object;
+    field 2247 7 options net/minecraft/client/Minecraft
   # End METHOD
-  methoddef 983 1329 init ()V
-  # Start METHOD init()V
-    method 1002 4 init panda/simplecabbage/other/ImmersiveEngineeringCompat init ()V
+  methoddef 2268 260 enqueueIMC (Lnet/minecraftforge/fml/event/lifecycle/InterModEnqueueEvent;)V
+  # Start METHOD enqueueIMC(Lnet/minecraftforge/fml/event/lifecycle/InterModEnqueueEvent;)V
+    method 2281 10 enqueueIMC com/example/examplemod/ExampleMod enqueueIMC (Lnet/minecraftforge/fml/event/lifecycle/InterModEnqueueEvent;)V
+    class 2298 20 InterModEnqueueEvent false net/minecraftforge/fml/event/lifecycle/InterModEnqueueEvent
+    parameter 2319 5 event com/example/examplemod/ExampleMod enqueueIMC (Lnet/minecraftforge/fml/event/lifecycle/InterModEnqueueEvent;)V 0
+    class 2400 13 InterModComms false net/minecraftforge/fml/InterModComms
+    method 2414 6 sendTo net/minecraftforge/fml/InterModComms sendTo (Ljava/lang/String;Ljava/lang/String;Ljava/util/function/Supplier;)Z
+    methoddef 2449 71 lambda[get] ()Ljava/lang/Object;
+    # Start METHOD lambda[get]()Ljava/lang/Object;
+      field 2457 6 LOGGER com/example/examplemod/ExampleMod
+      method 2464 4 info org/apache/logging/log4j/Logger info (Ljava/lang/String;)V
+    # End METHOD
   # End METHOD
-# End CLASS
-end
-start 1 panda/simplecabbage/other/ThermalCompat.java b14dc369d5769c6cf934e919854ced2d
-package 8 25 panda.simplecabbage.other
-classdef 243 619 panda/simplecabbage/other/ThermalCompat
-# Start CLASS panda/simplecabbage/other/ThermalCompat
-  class 256 13 ThermalCompat false panda/simplecabbage/other/ThermalCompat
-  methoddef 277 85 <init> ()V
-  # Start METHOD <init>()V
-    method 285 13 ThermalCompat panda/simplecabbage/other/ThermalCompat <init> ()V
-    class 319 21 IllegalStateException false java/lang/IllegalStateException
+  methoddef 2534 308 processIMC (Lnet/minecraftforge/fml/event/lifecycle/InterModProcessEvent;)V
+  # Start METHOD processIMC(Lnet/minecraftforge/fml/event/lifecycle/InterModProcessEvent;)V
+    method 2547 10 processIMC com/example/examplemod/ExampleMod processIMC (Lnet/minecraftforge/fml/event/lifecycle/InterModProcessEvent;)V
+    class 2564 20 InterModProcessEvent false net/minecraftforge/fml/event/lifecycle/InterModProcessEvent
+    parameter 2585 5 event com/example/examplemod/ExampleMod processIMC (Lnet/minecraftforge/fml/event/lifecycle/InterModProcessEvent;)V 0
+    field 2688 6 LOGGER com/example/examplemod/ExampleMod
+    method 2695 4 info org/apache/logging/log4j/Logger info (Ljava/lang/String;Ljava/lang/Object;)V
+    parameter 2714 5 event com/example/examplemod/ExampleMod processIMC (Lnet/minecraftforge/fml/event/lifecycle/InterModProcessEvent;)V 0
+    method 2720 12 getIMCStream net/minecraftforge/fml/event/lifecycle/ModLifecycleEvent getIMCStream ()Ljava/util/stream/Stream;
+    method 2752 3 map java/util/stream/Stream map (Ljava/util/function/Function;)Ljava/util/stream/Stream;
+    parameter 2756 1 m com/example/examplemod/ExampleMod lambda$5 (Lnet/minecraftforge/fml/InterModComms$IMCMessage;)Ljava/lang/Object; 0
+    methoddef 2756 31 lambda$5 (Lnet/minecraftforge/fml/InterModComms$IMCMessage;)Ljava/lang/Object;
+    # Start METHOD lambda$5(Lnet/minecraftforge/fml/InterModComms$IMCMessage;)Ljava/lang/Object;
+      parameter 2759 1 m com/example/examplemod/ExampleMod lambda$5 (Lnet/minecraftforge/fml/InterModComms$IMCMessage;)Ljava/lang/Object; 0
+      method 2761 18 getMessageSupplier net/minecraftforge/fml/InterModComms$IMCMessage getMessageSupplier ()Ljava/util/function/Supplier;
+      method 2782 3 get java/util/function/Supplier get ()Ljava/lang/Object;
+    # End METHOD
+    method 2806 7 collect java/util/stream/Stream collect (Ljava/util/stream/Collector;)Ljava/lang/Object;
+    class 2814 10 Collectors false java/util/stream/Collectors
+    method 2825 6 toList java/util/stream/Collectors toList ()Ljava/util/stream/Collector;
   # End METHOD
-  methoddef 368 491 init ()V
-  # Start METHOD init()V
-    method 387 4 init panda/simplecabbage/other/ThermalCompat init ()V
+  methoddef 2928 184 onServerStarting (Lnet/minecraftforge/fml/event/server/FMLServerStartingEvent;)V
+  # Start METHOD onServerStarting(Lnet/minecraftforge/fml/event/server/FMLServerStartingEvent;)V
+    class 2929 14 SubscribeEvent false net/minecraftforge/eventbus/api/SubscribeEvent
+    method 2960 16 onServerStarting com/example/examplemod/ExampleMod onServerStarting (Lnet/minecraftforge/fml/event/server/FMLServerStartingEvent;)V
+    class 2977 22 FMLServerStartingEvent false net/minecraftforge/fml/event/server/FMLServerStartingEvent
+    parameter 3000 5 event com/example/examplemod/ExampleMod onServerStarting (Lnet/minecraftforge/fml/event/server/FMLServerStartingEvent;)V 0
+    field 3064 6 LOGGER com/example/examplemod/ExampleMod
+    method 3071 4 info org/apache/logging/log4j/Logger info (Ljava/lang/String;)V
   # End METHOD
-# End CLASS
-end
-start 1 panda/simplecabbage/proxy/ClientProxy.java c5c100ec0064bf3de7173fe219521970
-package 8 25 panda.simplecabbage.proxy
-classdef 504 609 panda/simplecabbage/proxy/ClientProxy
-# Start CLASS panda/simplecabbage/proxy/ClientProxy
-  class 505 3 Mod false net/minecraftforge/fml/common/Mod
-  class 509 18 EventBusSubscriber true net/minecraftforge/fml/common/Mod$EventBusSubscriber
-# End CLASS
-end
-start 1 panda/simplecabbage/proxy/CommonProxy.java e26d63fd14c4fd49209ed49ad782c305
-package 8 25 panda.simplecabbage.proxy
-classdef 100 137 panda/simplecabbage/proxy/CommonProxy
-# Start CLASS panda/simplecabbage/proxy/CommonProxy
-  class 113 11 CommonProxy false panda/simplecabbage/proxy/CommonProxy
-  methoddef 134 100 registerModels (Lnet/minecraftforge/client/event/ModelRegistryEvent;)V
-  # Start METHOD registerModels(Lnet/minecraftforge/client/event/ModelRegistryEvent;)V
-    method 153 14 registerModels panda/simplecabbage/proxy/CommonProxy registerModels (Lnet/minecraftforge/client/event/ModelRegistryEvent;)V
-    class 168 18 ModelRegistryEvent false net/minecraftforge/client/event/ModelRegistryEvent
-    parameter 187 5 event panda/simplecabbage/proxy/CommonProxy registerModels (Lnet/minecraftforge/client/event/ModelRegistryEvent;)V 0
-  # End METHOD
-# End CLASS
-end
-start 1 panda/simplecabbage/proxy/ServerProxy.java 59e41f99b6b33a432a2df42ce770b4fa
-package 8 25 panda.simplecabbage.proxy
-classdef 131 135 panda/simplecabbage/proxy/ServerProxy
-# Start CLASS panda/simplecabbage/proxy/ServerProxy
-  class 132 3 Mod false net/minecraftforge/fml/common/Mod
-  class 136 18 EventBusSubscriber true net/minecraftforge/fml/common/Mod$EventBusSubscriber
+  classdef 3293 337 com/example/examplemod/ExampleMod$RegistryEvents
+  # Start CLASS com/example/examplemod/ExampleMod$RegistryEvents
+    class 3294 3 Mod false net/minecraftforge/fml/common/Mod
+    class 3298 18 EventBusSubscriber true net/minecraftforge/fml/common/Mod$EventBusSubscriber
+    method 3317 3 bus net/minecraftforge/fml/common/Mod$EventBusSubscriber bus ()Lnet/minecraftforge/fml/common/Mod$EventBusSubscriber$Bus;
+    class 3321 3 Mod false net/minecraftforge/fml/common/Mod
+    class 3325 18 EventBusSubscriber true net/minecraftforge/fml/common/Mod$EventBusSubscriber
+    class 3344 3 Bus true net/minecraftforge/fml/common/Mod$EventBusSubscriber$Bus
+    field 3348 3 MOD net/minecraftforge/fml/common/Mod$EventBusSubscriber$Bus
+    class 3377 14 RegistryEvents false com/example/examplemod/ExampleMod$RegistryEvents
+    methoddef 3402 222 onBlocksRegistry (Lnet/minecraftforge/event/RegistryEvent$Register;)V
+    # Start METHOD onBlocksRegistry(Lnet/minecraftforge/event/RegistryEvent$Register;)V
+      class 3403 14 SubscribeEvent false net/minecraftforge/eventbus/api/SubscribeEvent
+      method 3445 16 onBlocksRegistry com/example/examplemod/ExampleMod$RegistryEvents onBlocksRegistry (Lnet/minecraftforge/event/RegistryEvent$Register;)V
+      class 3468 13 RegistryEvent false net/minecraftforge/event/RegistryEvent
+      class 3482 8 Register true net/minecraftforge/event/RegistryEvent$Register
+      class 3491 5 Block false net/minecraft/block/Block
+      parameter 3498 18 blockRegistryEvent com/example/examplemod/ExampleMod$RegistryEvents onBlocksRegistry (Lnet/minecraftforge/event/RegistryEvent$Register;)V 0
+      field 3573 6 LOGGER com/example/examplemod/ExampleMod
+      method 3580 4 info org/apache/logging/log4j/Logger info (Ljava/lang/String;)V
+    # End METHOD
+  # End CLASS
 # End CLASS
 end

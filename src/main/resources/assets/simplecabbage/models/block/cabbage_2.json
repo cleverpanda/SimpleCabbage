@@ -1,0 +1,7 @@
+{
+    "parent": "simplecabbage:block/block_fan_45",
+    "textures": {
+        "fan": "simplecabbage:blocks/cabbage_3",
+	"cross": "simplecabbage:blocks/cabbage_1"
+    }
+}

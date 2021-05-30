@@ -12,7 +12,7 @@
 <mapEntry key="MCP_MAPPINGS" value="official_1.16.5"/>
 <mapEntry key="MCP_VERSION" value="20210115.111550"/>
 <mapEntry key="MC_VERSION" value="1.16.5"/>
-<mapEntry key="MOD_CLASSES" value="simplecabbage%%D:\Modding\1.16\SimpleCabbage\bin\main;simplecabbage%%D:\Modding\1.16\SimpleCabbage\bin\main"/>
+<mapEntry key="MOD_CLASSES" value="examplemod%%D:\Modding\1.16\SimpleCabbage\bin\main;examplemod%%D:\Modding\1.16\SimpleCabbage\bin\main"/>
 <mapEntry key="assetDirectory" value="C:\Users\Bryce\.gradle\caches\forge_gradle\assets"/>
 <mapEntry key="assetIndex" value="1.16"/>
 <mapEntry key="nativesDirectory" value="D:\Modding\1.16\SimpleCabbage\build\natives"/>

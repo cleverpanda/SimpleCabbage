@@ -3,129 +3,146 @@ package panda.simplecabbage.blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockCrops;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.CropsBlock;
+import net.minecraft.block.FarmlandBlock;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.properties.PropertyInteger;
-import net.minecraft.block.state.BlockStateContainer;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.state.IntegerProperty;
+import net.minecraft.state.StateContainer;
+import net.minecraft.util.Direction;
+import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumPlantType;
+import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IPlantable;
-import panda.simplecabbage.ConfigSimpleCabbage;
+import panda.simplecabbage.config.ConfigSimpleCabbage;
 import panda.simplecabbage.init.ModItems;
 
-public class BlockCabbage extends BlockCrops implements IGrowable {
+public class BlockCabbage extends CropsBlock implements IGrowable {
 
-	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 4);
+	public static final IntegerProperty AGE_0_4 = IntegerProperty.create("age", 0, 4);
 
-	public static final AxisAlignedBB[] CROPS_AABB = new AxisAlignedBB[] {
-			new AxisAlignedBB(0.3125D, 0.0D, 0.3125D, 0.6875D, 0.1875D, 0.6875D), //0  6 6 3
-			new AxisAlignedBB(0.25D,   0.0D, 0.25D,   0.75D,   0.5D,    0.75D), //1
-			new AxisAlignedBB(0.25D,   0.0D, 0.25D,   0.625D,  0.5D,    0.75D), //2
-			new AxisAlignedBB(0.1875D, 0.0D, 0.1875D, 0.8125D, 0.5D,    0.8125D), //3
-			new AxisAlignedBB(0.1875D, 0.0D, 0.1875D, 0.8125D, 0.625D,  0.8125D), //4
-		};
+	protected static final VoxelShape[] SHAPES = new VoxelShape[]{
+		Block.makeCuboidShape(5D, 0D, 5D, 11D,  3D, 11D),
+		Block.makeCuboidShape(4D, 0D, 4D, 12D,  8D, 12D),
+		Block.makeCuboidShape(4D, 0D, 4D, 10D,  8D, 12D),
+		Block.makeCuboidShape(3D, 0D, 3D, 13D,  8D, 13D),
+		Block.makeCuboidShape(3D, 0D, 3D, 13D, 10D, 13D)
+	};
 
 	public BlockCabbage() {
-		setHardness(0.0F);
-		setSoundType(SoundType.PLANT);
-		disableStats();
+		super(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F,0F).sound(SoundType.CROP));
 	}
 
 	@Override
-	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-		if (getAge(state) == getMaxAge()){
-			drops.add(new ItemStack(getCrop()));
-		}else {
-			drops.add(new ItemStack(getSeed()));
-		}
-		if(!ConfigSimpleCabbage.useeasyharvesting) {
-			drops.add(new ItemStack(getSeed()));
-		}				
-	}
+	 public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
+		 return SHAPES[state.get(AGE_0_4)];
+	 }
 
-	@Override
-	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, getAgeProperty());
-	}
+	 @Override
+	 protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+		 return state.getBlock() instanceof FarmlandBlock;
+	 }
 
-	@Override
-	protected PropertyInteger getAgeProperty() {
-		return AGE;
-	}
+	 @Override
+	 public IntegerProperty getAgeProperty() {
+		 return AGE_0_4;
+	 }	   
 
-	@Override
-	protected int getBonemealAgeIncrease(World worldIn) {
-		return MathHelper.getInt(worldIn.rand, 1, 2);
-	}
+	 @Override
+	 @OnlyIn(Dist.CLIENT)
+	 protected IItemProvider getSeedsItem() {
+		 return ModItems.CABBAGE_SEEDS;
+	 }
 
+	 @Override
+	 public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
+		 BlockState down = world.getBlockState(pos.down());
+		 return down.getBlock().canSustainPlant(down, world, pos, Direction.UP, this);
+	 }
+
+	 @Override
+	 public boolean canGrow(IBlockReader world, BlockPos pos, BlockState state, boolean isClient) {
+		 return !isMaxAge(state) && world.getBlockState(pos.up()).getMaterial().isReplaceable();
+	 }
+
+	 @Override
+	 public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
+		 return canGrow(worldIn, pos, worldIn.getBlockState(pos), worldIn.isRemote);
+	 }
+
+	 @Override
+	 protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder){
+		 builder.add(AGE_0_4);
+	 }
+
+	 @Override
+	 public int getMaxAge() {
+		 return 4;
+	 }
+	 
+	 @Override
+	 @OnlyIn(Dist.CLIENT)
+	 public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
+	     return new ItemStack(ModItems.CABBAGE_SEEDS);
+	 }
+
+
+	 public boolean checkFertile(World world, BlockPos pos) {
+		 return world.getBlockState(pos.down()).isFertile(world, pos.down());
+	 }
+
+	 @Override
+	 public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player){
+		 return new ItemStack(ModItems.CABBAGE_SEEDS);
+	 }
+	 
 	@Override
-	protected Item getCrop() {
-		return ModItems.CABBAGE_HEAD;
+	public boolean ticksRandomly(BlockState state) {
+		return state.get(AGE_0_4) < 5;
 	}
 	
-	@Override
-    protected Item getSeed() {
-        return ModItems.CABBAGE_SEEDS;
-    }
-
-	@Override
-	public int getMaxAge() {
-		return 4;
-	}
-
-	@Override
-	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
-		return EnumPlantType.Crop;
-	}
-
-	@Override
-	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-		return new ItemStack(getSeed());
-	}
-
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-
-		//if(worldIn.isRemote && playerIn != null) {
-		//	Minecraft.getMinecraft().player.sendChatMessage("chance:"+(int) ((25.0F / getGrowthChance(this, worldIn, pos)) + 1));
-		//}
-		//worldIn.setBlockState(pos, this.getDefaultState());
-		if(ConfigSimpleCabbage.useeasyharvesting && isMaxAge(state)){
-			this.dropBlockAsItem(worldIn, pos, state, 0);
-			return worldIn.setBlockState(pos, this.getDefaultState());
-		}
-		
-		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);		
-	}
+	
+	
+	
+	
+	
 	
 	@Override
-    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        super.updateTick(worldIn, pos, state, rand);
+    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+		this.randomTick(state, worldIn, pos, rand);
+	}
+	
+	
+	
+	
+	
+	
+	@Override
+	 public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 
         if (!worldIn.isAreaLoaded(pos, 1)) return; // Forge: prevent loading unloaded chunks when checking neighbor's light
-        if (worldIn.getLightFromNeighbors(pos.up()) >= 9) {
+        if (worldIn.getLightSubtracted(pos.up(),0) >= 9) {
             int i = this.getAge(state);
 
             if (i < this.getMaxAge()) {
-                float f = getGrowthChance(this, worldIn, pos);
+                float f = 25; //getGrowthChance(this, worldIn, pos);
 
-                if(ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt((int) (((25.0F / f) + 1)/ConfigSimpleCabbage.growModifier)) == 0)){
+                if(ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt((int) (((25.0F / f) + 1))) == 0)){
                     worldIn.setBlockState(pos, this.withAge(i + 1), 2);
-                    ForgeHooks.onCropsGrowPost(worldIn, pos, state, worldIn.getBlockState(pos));
+                    ForgeHooks.onCropsGrowPost(worldIn, pos, state);
                 }
             }
         }
@@ -160,12 +177,12 @@ public class BlockCabbage extends BlockCrops implements IGrowable {
         for (int i = -1; i <= 1; ++i) {
             for (int j = -1; j <= 1; ++j) {
                 float soilpts = 0.0F;
-                IBlockState iblockstate = worldIn.getBlockState(below.add(i, 0, j));
+                BlockState iblockstate = worldIn.getBlockState(below.add(i, 0, j));
 
-                if (iblockstate.getBlock().canSustainPlant(iblockstate, worldIn, below.add(i, 0, j), EnumFacing.UP, (IPlantable)blockIn)) {
+                if (iblockstate.getBlock().canSustainPlant(iblockstate, worldIn, below.add(i, 0, j), Direction.UP, (IPlantable)blockIn)) {
                 	soilpts = 1.0F;
                 	
-                    if (iblockstate.getBlock().isFertile(worldIn, below.add(i, 0, j))) {
+                    if (iblockstate.getBlock().isFertile(iblockstate, worldIn, below.add(i, 0, j))) {
                     	soilpts = 3.0F;
                     }
                 }
@@ -180,51 +197,5 @@ public class BlockCabbage extends BlockCrops implements IGrowable {
         
         return score*mult;
     }
-	
-//	@Override
-//	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-//		this.checkAndDropBlock(worldIn, pos, state); //Check and see if we can still exist.
-//		if (worldIn.getBlockState(pos) == state) //If we can:
-//		{
-//			if (!worldIn.isAreaLoaded(pos, 1)) //Make sure we should bother checking
-//				return;
-//			if (worldIn.getLightFromNeighbors(pos.up()) >= 9 && worldIn.getBlockState(pos.down()).getBlock().isFertile(worldIn, pos.down())) //Check for light and water
-//			{
-//				boolean canGrow = rand.nextInt(ConfigSimpleCabbage.growChance) == 0;
-//				if (!isMaxAge(state)) {
-//					if (ForgeHooks.onCropsGrowPre(worldIn, pos, state, canGrow)) {
-//						worldIn.setBlockState(pos, withAge(getAge(state) + 1));
-//						ForgeHooks.onCropsGrowPost(worldIn, pos, state, worldIn.getBlockState(pos));
-//					}
-//				}
-//			}
-//		}
-//	}
-	
-
-	//@Override
-	//public IBlockState getStateFromMeta(int meta) {
-	//	return withAge(meta);
-	//}
-
-	//@Override
-	//public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-	//	updateTick(worldIn, pos, state, rand);
-	//}
-
-	//@Override
-	//public int getMetaFromState(IBlockState state) {
-	//	return getAge(state);
-	//}
-	
-	//@Override
-	//public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-	//	return CROPS_AABB[state.getValue(AGE)];
-	//}
-
-	//@Override
-	//public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-	//	return true;
-	//}
 
 }
